@@ -1,6 +1,6 @@
 # Ayrik-Dotfiles
 
-This is my personal Hyprland configuration. though Most of the work comes from others who have shared their work—I've mostly copied and tweaked things a little. **Many things are still unfinished or half-working, so consider this a work in progress.**
+This is my personal Hyprland configuration. though most of the work comes from others who have shared their work—I've mostly copied and tweaked things a little. **Many things are still unfinished or half-working, so consider this a work in progress.**
 
 These dotfiles are tailored for my daily use and meant as a reference or inspiration, not as a ready-to-use setup.
  
