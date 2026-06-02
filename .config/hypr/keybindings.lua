@@ -1,6 +1,5 @@
-
 ----------------------
---  KEYBINDINGS  --
+--   KEYBINDINGS    --
 ----------------------
 
 local mainMod = "SUPER"
@@ -11,105 +10,104 @@ local menu        = "rofi -show"
 ---------------------
 -- CORE KEYBINDINGS --
 ---------------------
-hl.bind(mainMod, "Return", "exec", terminal)
-hl.bind(mainMod, "Q", "killactive")
-hl.bind(mainMod, "Delete", "exit")
-hl.bind(mainMod, "E", "exec", fileManager)
-hl.bind(mainMod, "D", "exec", menu)
-hl.bind(mainMod, "R", "exec", "~/.config/waybar/scripts/launch.sh")
-hl.bind(mainMod, "V", "exec", "~/.local/bin/clipboard-manager.sh")
-hl.bind(mainMod, "H", "exec", "hyprpicker -a")
-hl.bind(mainMod, "N", "exec", "/usr/bin/rofi-noter")
-hl.bind(mainMod, "W", "exec", "python ~/.config/ayrik/ayrik.py --action select-wallpaper")
-hl.bind(mainMod, "T", "exec", "Telegram")
-hl.bind(mainMod, "G", "exec", "ghostty")
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + Delete", hl.dsp.exit())
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("~/.config/waybar/scripts/launch.sh"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("~/.local/bin/clipboard-manager.sh"))
+hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("hyprpicker -a"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("/usr/bin/rofi-noter"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("python ~/.config/ayrik/ayrik.py --action select-wallpaper"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("Telegram"))
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("ghostty"))
 
-hl.bind(mainMod .. "_SHIFT", "L", "exec", "hyprlock")
-hl.bind(mainMod .. "_SHIFT", "Z", "exec", "app.zen_browser.zen")
-hl.bind(mainMod .. "_SHIFT", "F", "exec", "firefox")
-hl.bind(mainMod .. "_SHIFT", "O", "exec", "obsidian")
-hl.bind(mainMod .. "_SHIFT", "T", "exec", "thorium-browser-avx2")
-hl.bind(mainMod .. "_SHIFT", "S", "exec", "hyprshot -m window")
-hl.bind(mainMod .. "_SHIFT", "C", "centerwindow")
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + SHIFT + Z", hl.dsp.exec_cmd("app.zen_browser.zen"))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd("firefox"))
+hl.bind(mainMod .. " + SHIFT + O", hl.dsp.exec_cmd("obsidian"))
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("thorium-browser-avx2"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m window"))
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprctl dispatch centerwindow"))
 
-hl.bind("CTRL_SHIFT", "R", "exec", "hyprctl reload")
-hl.bind("", "PRINT", "exec", "hyprshot -m output")
+hl.bind("CTRL + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"))
 
 ------------------------
 -- WORKSPACE ROUTING --
 ------------------------
--- Clean Lua loop to generate workspace binds 1-10 dynamically
 for i = 1, 9 do
-    hl.bind(mainMod, tostring(i), "workspace", tostring(i))
-    hl.bind(mainMod .. "_SHIFT", tostring(i), "movetoworkspace", tostring(i))
+    hl.bind(mainMod .. " + " .. i, hl.dsp.exec_cmd("hyprctl dispatch workspace " .. i))
+    hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace " .. i))
 end
 -- Handle workspace 10 mapped to '0'
-hl.bind(mainMod, "0", "workspace", "10")
-hl.bind(mainMod .. "_SHIFT", "0", "movetoworkspace", "10")
+hl.bind(mainMod .. " + 0", hl.dsp.exec_cmd("hyprctl dispatch workspace 10"))
+hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.exec_cmd("hyprctl dispatch movetoworkspace 10"))
 
-hl.bind(mainMod .. "_CTRL", "Right", "workspace", "r+1")
-hl.bind(mainMod .. "_CTRL", "Left", "workspace", "r-1")
-hl.bind(mainMod .. "_CTRL", "Down", "workspace", "empty")
-hl.bind(mainMod, "mouse_down", "workspace", "r+1")
-hl.bind(mainMod, "mouse_up", "workspace", "r-1")
+hl.bind(mainMod .. " + CTRL + Right", hl.dsp.exec_cmd("hyprctl dispatch workspace r+1"))
+hl.bind(mainMod .. " + CTRL + Left", hl.dsp.exec_cmd("hyprctl dispatch workspace r-1"))
+hl.bind(mainMod .. " + CTRL + Down", hl.dsp.exec_cmd("hyprctl dispatch workspace empty"))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.exec_cmd("hyprctl dispatch workspace r+1"))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.exec_cmd("hyprctl dispatch workspace r-1"))
 
 -----------------------
 -- WINDOW MANAGEMENT --
 -----------------------
-hl.bind(mainMod .. "_ALT", "Space", "togglegroup")
-hl.bind(mainMod, "Space", "togglefloating")
-hl.bind(mainMod, "F", "fullscreen")
+hl.bind(mainMod .. " + ALT + Space", hl.dsp.exec_cmd("hyprctl dispatch togglegroup"))
+hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("hyprctl dispatch togglefloating"))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("hyprctl dispatch fullscreen"))
 
--- Window Resizing (Repeatable binds)
-hl.binde(mainMod .. "_SHIFT", "Right", "resizeactive", "30 0")
-hl.binde(mainMod .. "_SHIFT", "Left", "resizeactive", "-30 0")
-hl.binde(mainMod .. "_SHIFT", "Up", "resizeactive", "0 -30")
-hl.binde(mainMod .. "_SHIFT", "Down", "resizeactive", "0 30")
+-- Window Resizing (Repeatable binds using trailing flags)
+hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 30 0"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Left", hl.dsp.exec_cmd("hyprctl dispatch resizeactive -30 0"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Up", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 0 -30"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + Down", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 0 30"), { repeating = true })
 
 -- Window Moving
-hl.bind(mainMod .. "_SHIFT_CTRL", "Right", "movewindow", "r")
-hl.bind(mainMod .. "_SHIFT_CTRL", "Left", "movewindow", "l")
-hl.bind(mainMod .. "_SHIFT_CTRL", "Up", "movewindow", "u")
-hl.bind(mainMod .. "_SHIFT_CTRL", "Down", "movewindow", "d")
+hl.bind(mainMod .. " + SHIFT + CTRL + Right", hl.dsp.exec_cmd("hyprctl dispatch movewindow r"))
+hl.bind(mainMod .. " + SHIFT + CTRL + Left", hl.dsp.exec_cmd("hyprctl dispatch movewindow l"))
+hl.bind(mainMod .. " + SHIFT + CTRL + Up", hl.dsp.exec_cmd("hyprctl dispatch movewindow u"))
+hl.bind(mainMod .. " + SHIFT + CTRL + Down", hl.dsp.exec_cmd("hyprctl dispatch movewindow d"))
 
--- Mouse Binds
-hl.bindm(mainMod, "mouse:272", "movewindow")
-hl.bindm(mainMod, "mouse:273", "resizewindow")
+-- Mouse Binds (Using trailing mouse flag)
+hl.bind(mainMod .. " + mouse:272", hl.dsp.exec_cmd("hyprctl dispatch movewindow"), { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.exec_cmd("hyprctl dispatch resizewindow"), { mouse = true })
 
 ---------------------------
 -- HYPRSCROLLING LAYOUT --
 ---------------------------
-hl.bind(mainMod, "Right", "layoutmsg", "move +col")
-hl.bind(mainMod, "Left", "layoutmsg", "move -col")
-hl.bind(mainMod, "P", "layoutmsg", "promote")
-hl.bind(mainMod, "L", "layoutmsg", "togglefit")
-hl.bind(mainMod .. "_SHIFT", "E", "layoutmsg", "fit active")
+hl.bind(mainMod .. " + Right", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg 'move +col'"))
+hl.bind(mainMod .. " + Left", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg 'move -col'"))
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg promote"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg togglefit"))
+hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg 'fit active'"))
 
-hl.bind(mainMod .. "_ALT", "Left", "layoutmsg", "swapcol l")
-hl.bind(mainMod .. "_ALT", "Right", "layoutmsg", "swapcol r")
-hl.bind(mainMod .. "_ALT", "Up", "swapwindow", "u")
-hl.bind(mainMod .. "_ALT", "Down", "swapwindow", "d")
+hl.bind(mainMod .. " + ALT + Left", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg 'swapcol l'"))
+hl.bind(mainMod .. " + ALT + Right", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg 'swapcol r'"))
+hl.bind(mainMod .. " + ALT + Up", hl.dsp.exec_cmd("hyprctl dispatch swapwindow u"))
+hl.bind(mainMod .. " + ALT + Down", hl.dsp.exec_cmd("hyprctl dispatch swapwindow d"))
 
-hl.bind(mainMod .. "_SHIFT", "Right", "layoutmsg", "colresize +0.1")
-hl.bind(mainMod .. "_SHIFT", "Left", "layoutmsg", "colresize -0.1")
+hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg 'colresize +0.1'"))
+hl.bind(mainMod .. " + SHIFT + Left", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg 'colresize -0.1'"))
 
 -----------------------
 -- HARDWARE CONTROLS --
 -----------------------
--- Audio and Brightness (Locked + Repeatable)
-hl.bindel("", "XF86AudioRaiseVolume", "exec", "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+")
-hl.bindel("", "XF86AudioLowerVolume", "exec", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
-hl.bindel("", "XF86AudioMute", "exec", "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
-hl.bindel("", "XF86AudioMicMute", "exec", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
-hl.bindel("", "XF86MonBrightnessUp", "exec", "brightnessctl -e4 -n2 set 5%+")
-hl.bindel("", "XF86MonBrightnessDown", "exec", "brightnessctl -e4 -n2 set 5%-")
+-- Audio and Brightness (Locked + Repeatable flags combined)
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+\n"), { repeating = true, locked = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true, locked = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { repeating = true, locked = true })
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { repeating = true, locked = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { repeating = true, locked = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { repeating = true, locked = true })
 
 -- Hyprsunset Gamma Keybinds
-hl.bindel("", "XF86MonBrightnessDown", "exec", "hyprctl hyprsunset gamma -10")
-hl.bindel("", "XF86MonBrightnessUp", "exec", "hyprctl hyprsunset gamma +10")
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("hyprctl hyprsunset gamma -10"), { repeating = true, locked = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("hyprctl hyprsunset gamma +10"), { repeating = true, locked = true })
 
 -- Media Player Controls (Locked binds)
-hl.bindl("", "XF86AudioNext", "exec", "playerctl next")
-hl.bindl("", "XF86AudioPause", "exec", "playerctl play-pause")
-hl.bindl("", "XF86AudioPlay", "exec", "playerctl play-pause")
-hl.bindl("", "XF86AudioPrev", "exec", "playerctl previous")
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
