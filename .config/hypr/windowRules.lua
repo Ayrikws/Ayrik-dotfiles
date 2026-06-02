@@ -28,9 +28,9 @@ hl.window_rule({
   match = { title = "^(Picture-in-Picture)" },
   float = true,
   size = { 585, 330 },
-  move = "100%-816 50",
+  move = { "100%-816", "50" }, -- Fixed: Split into a Lua coordinate table
   pin = true,
-  opacity = "1.0 0.8 override", 
+  opacity = "1.0 0.8 override",
   no_initial_focus = true
 })
 
