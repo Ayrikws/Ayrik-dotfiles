@@ -1,8 +1,8 @@
 ----------------------
---   KEYBINDINGS    --
+--    KEYBINDINGS    --
 ----------------------
 
-local mainMod = "SUPER"
+local mainMod     = "SUPER"
 local terminal    = "kitty"
 local fileManager = "thunar"
 local menu        = "rofi -show"
@@ -58,7 +58,7 @@ hl.bind(mainMod .. " + ALT + Space", hl.dsp.exec_cmd("hyprctl dispatch togglegro
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd("hyprctl dispatch togglefloating"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("hyprctl dispatch fullscreen"))
 
--- Window Resizing (Repeatable binds using trailing flags)
+-- Window Resizing (Repeatable binds)
 hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 30 0"), { repeating = true })
 hl.bind(mainMod .. " + SHIFT + Left", hl.dsp.exec_cmd("hyprctl dispatch resizeactive -30 0"), { repeating = true })
 hl.bind(mainMod .. " + SHIFT + Up", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 0 -30"), { repeating = true })
@@ -70,7 +70,7 @@ hl.bind(mainMod .. " + SHIFT + CTRL + Left", hl.dsp.exec_cmd("hyprctl dispatch m
 hl.bind(mainMod .. " + SHIFT + CTRL + Up", hl.dsp.exec_cmd("hyprctl dispatch movewindow u"))
 hl.bind(mainMod .. " + SHIFT + CTRL + Down", hl.dsp.exec_cmd("hyprctl dispatch movewindow d"))
 
--- Mouse Binds (Using trailing mouse flag)
+-- Mouse Binds
 hl.bind(mainMod .. " + mouse:272", hl.dsp.exec_cmd("hyprctl dispatch movewindow"), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.exec_cmd("hyprctl dispatch resizewindow"), { mouse = true })
 
@@ -88,25 +88,26 @@ hl.bind(mainMod .. " + ALT + Right", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg
 hl.bind(mainMod .. " + ALT + Up", hl.dsp.exec_cmd("hyprctl dispatch swapwindow u"))
 hl.bind(mainMod .. " + ALT + Down", hl.dsp.exec_cmd("hyprctl dispatch swapwindow d"))
 
-hl.bind(mainMod .. " + SHIFT + Right", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg 'colresize +0.1'"))
-hl.bind(mainMod .. " + SHIFT + Left", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg 'colresize -0.1'"))
+-- NOTE: Removed the conflicting SHIFT + Right/Left layout overrides here to prevent overwriting your resize controls.
 
 -----------------------
 -- HARDWARE CONTROLS --
 -----------------------
--- Audio and Brightness (Locked + Repeatable flags combined)
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+\n"), { repeating = true, locked = true })
+-- Audio controls
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true, locked = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true, locked = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { repeating = true, locked = true })
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { repeating = true, locked = true })
+
+-- Screen Brightness (Standard Keys)
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { repeating = true, locked = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { repeating = true, locked = true })
 
--- Hyprsunset Gamma Keybinds
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("hyprctl hyprsunset gamma -10"), { repeating = true, locked = true })
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("hyprctl hyprsunset gamma +10"), { repeating = true, locked = true })
+-- Hyprsunset Gamma (SHIFT + Brightness Keys)
+hl.bind("SHIFT + XF86MonBrightnessUp", hl.dsp.exec_cmd("hyprctl hyprsunset gamma +10"), { repeating = true, locked = true })
+hl.bind("SHIFT + XF86MonBrightnessDown", hl.dsp.exec_cmd("hyprctl hyprsunset gamma -10"), { repeating = true, locked = true })
 
--- Media Player Controls (Locked binds)
+-- Media Player Controls
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
