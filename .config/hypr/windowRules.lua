@@ -27,14 +27,15 @@ hl.window_rule({ match = { class = "^(Motrix)$" }, opacity = 0.80 })
 hl.window_rule({
   match = { title = "^(Picture-in-Picture)" },
   float = true,
-  size = { 585, 330 },
-  move = { "100%-816", "50" }, -- Fixed: Split into a Lua coordinate table
   pin = true,
-  opacity = "1.0 0.8 override",
-  no_initial_focus = true
+  no_initial_focus = true,
+  opacity = "1.0 0.8 override" -- Kept your combined string override
 })
 
--- Layer Rules
+-- Handle layout alterations sequentially to prevent order-scrambling bugs
+hl.window_rule({ match = { title = "^(Picture-in-Picture)" }, center = true })
+hl.window_rule({ match = { title = "^(Picture-in-Picture)" }, size = { 585, 330 } })
+hl.window_rule({ match = { title = "^(Picture-in-Picture)" }, move = { "100%-816", "50" } })-- Layer Rules
 hl.layer_rule({ match = { namespace = "^(waybar)$" }, blur = true })
 hl.layer_rule({ match = { namespace = "^(logout_dialog)$" }, blur = true })
 
