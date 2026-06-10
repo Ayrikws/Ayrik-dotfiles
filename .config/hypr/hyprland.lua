@@ -11,15 +11,17 @@ hl.monitor({
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
-local terminal = "kitty"
+local terminal    = "kitty"
 local fileManager = "thunar"
-local menu = "rofi -show"
+local menu        = "rofi -show"
 
 -------------------
 ---- AUTOSTART ----
 -------------------
 hl.on("hyprland.start", function()
-    hl.exec_cmd("waybar & awww-daemon & swaync") 
+    hl.exec_cmd("waybar")
+    hl.exec_cmd("awww-daemon")
+    hl.exec_cmd("swaync")
     hl.exec_cmd("wl-paste --watch cliphist store")
     hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 22")
     hl.exec_cmd("udiskie")
@@ -51,7 +53,7 @@ hl.config({
         border_size = 2,
         col = {
             active_border = "rgb(EBDBB2)",
-            inactive_border = "rgba(00000000)"
+            inactive_border = "rgba(50382dff)" -- Restored from original
         },
         resize_on_border = true,
         allow_tearing = false,
@@ -125,7 +127,12 @@ hl.config({
             natural_scroll = false
         }
     },
-
+    
+    -- Restored the scrolling layout rules!
+    scrolling = {
+        column_width = 0.65,
+        fullscreen_on_one_column = true
+    }
 })
 
 -------------------------
@@ -136,9 +143,9 @@ hl.device({
     sensitivity = -0.5
 })
 
--------------------------
----- SOURCED MODULES ----
--------------------------
+--------------------
+----  MODULES   ----
+--------------------
 require("keybindings")
-require("workspaceRules")
 require("windowRules")
+require("workspaceRules")
