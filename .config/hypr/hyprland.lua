@@ -19,7 +19,7 @@ local menu        = "rofi -show"
 ---- AUTOSTART ----
 -------------------
 hl.on("hyprland.start", function()
-    hl.exec_cmd("waybar")
+    hl.exec_cmd("qs")
     hl.exec_cmd("awww-daemon")
     hl.exec_cmd("swaync")
     hl.exec_cmd("wl-paste --watch cliphist store")
@@ -53,7 +53,7 @@ hl.config({
         border_size = 2,
         col = {
             active_border = "rgb(EBDBB2)",
-            inactive_border = "rgba(50382dff)" -- Restored from original
+            inactive_border = "rgba(00000000)"
         },
         resize_on_border = true,
         allow_tearing = false,

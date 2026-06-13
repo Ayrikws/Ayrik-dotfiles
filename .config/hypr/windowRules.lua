@@ -8,6 +8,7 @@ hl.window_rule({ match = { class = "^(com.github.neithern.g4music|org.qbittorren
 hl.window_rule({ match = { class = "^(ball-game|desert-rain)" }, float = true, fullscreen = true })
 hl.window_rule({ match = { class = "^(it.mijorus.smile)$" }, float = true })
 hl.window_rule({ match = { class = "^(steam)$" }, float = true, opacity = 0.80 })
+hl.window_rule({ match = { class = "^(foot)$" }, opacity = 0.80 })
 hl.window_rule({ match = { class = "^(xdg-desktop-portal-gtk)$" }, float = true })
 hl.window_rule({ match = { title = "^(.*Network Manager.*)$" }, float = true })
 hl.window_rule({ match = { class = "^(org.pulseaudio.pavucontrol)$" }, float = true, size = { 855, 525 }, center = true })

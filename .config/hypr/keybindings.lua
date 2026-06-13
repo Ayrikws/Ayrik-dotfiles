@@ -22,6 +22,7 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("/usr/bin/rofi-noter"), { description
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("python ~/.config/ayrik/ayrik.py --action select-wallpaper"), { description = "Utilities: Wallpaper selector" })
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("Telegram"), { description = "App: Telegram" })
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("ghostty"), { description = "App: Ghostty" })
+hl.bind(mainMod .. " + U", hl.dsp.exec_cmd("foot"), { description = "App: Foot" })
 
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("hyprlock"), { description = "Session: Lock screen" })
 hl.bind(mainMod .. " + SHIFT + Z", hl.dsp.exec_cmd("app.zen_browser.zen"), { description = "App: Zen Browser" })
