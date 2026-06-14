@@ -39,30 +39,33 @@ hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output"), { description = "Utiliti
 -- WORKSPACE ROUTING --
 ------------------------
 for i = 1, 9 do
-    hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = i }), { description = "Workspace: Focus " .. i })
-    hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }), { description = "Window: Send to workspace " .. i })
+    hl.bind(mainMod .. " + " .. i, 			hl.dsp.focus({ workspace = i }), { description = "Workspace: Focus " .. i })
+    hl.bind(mainMod .. " + SHIFT + " .. i,  hl.dsp.window.move({ workspace = i }), { description = "Window: Send to workspace " .. i })
 end
 -- Handle workspace 10 mapped to '0'
 hl.bind(mainMod .. " + 0", hl.dsp.focus({ workspace = 10 }), { description = "Workspace: Focus 10" })
 hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }), { description = "Window: Send to workspace 10" })
 
 hl.bind(mainMod .. " + CTRL + Right", hl.dsp.focus({ workspace = "r+1" }), { description = "Workspace: Focus right" })
-hl.bind(mainMod .. " + CTRL + Left", hl.dsp.focus({ workspace = "r-1" }), { description = "Workspace: Focus left" })
-hl.bind(mainMod .. " + CTRL + Down", hl.dsp.focus({ workspace = "empty" }), { description = "Workspace: Focus empty" })
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "r+1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "r-1" }))
+hl.bind(mainMod .. " + CTRL + Left",  hl.dsp.focus({ workspace = "r-1" }), { description = "Workspace: Focus left" })
+hl.bind(mainMod .. " + CTRL + Down",  hl.dsp.focus({ workspace = "empty" }), { description = "Workspace: Focus empty" })
+hl.bind(mainMod .. " + mouse_down",   hl.dsp.focus({ workspace = "r+1" }))
+hl.bind(mainMod .. " + mouse_up", 	  hl.dsp.focus({ workspace = "r-1" }))
+
+hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + CTRL + S",  hl.dsp.window.move({ workspace = "special:magic" }))
 
 -----------------------
 -- WINDOW MANAGEMENT --
 -----------------------
 hl.bind(mainMod .. " + ALT + Space", hl.dsp.exec_cmd("hyprctl dispatch togglegroup"), { description = "Window: Toggle group" })
-hl.bind(mainMod .. " + Space", hl.dsp.window.float({ action = "toggle" }), { description = "Toggle Floating" })
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Window: Fullscreen" })
+hl.bind(mainMod .. " + Space", 		 hl.dsp.window.float({ action = "toggle" }), { description = "Toggle Floating" })
+hl.bind(mainMod .. " + F", 			 hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Window: Fullscreen" })
 
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.resize({ x = 50, y = 0, relative = true }), { repeating = true }, { description = "Increase window width with keyboard" })
-hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.resize({ x = -50, y = 0, relative = true }), { repeating = true }, { description = "Reduce window width with keyboard" })
-hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.resize({ x = 0, y = 50, relative = true }), { repeating = true }, { description = "Increase window height with keyboard" })
-hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.resize({ x = 0, y = -50, relative = true }), { repeating = true }, { description = "Reduce window height with keyboard" })
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.resize({ x = 30,  y = 0,  relative = true }), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.resize({ x = -30, y = 0,  relative = true }), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.window.resize({ x = 0,   y = -30, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.window.resize({ x = 0,   y = 30,  relative = true }), { repeating = true })
 
 -- Window Moving (Focus direction)
 for i = 1, 4 do
@@ -78,16 +81,16 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true, descr
 ---------------------------
 -- HYPRSCROLLING LAYOUT --
 ---------------------------
-hl.bind(mainMod .. " + Right", hl.dsp.layout("move +col"), { description = "Layout: Move column right" })
-hl.bind(mainMod .. " + Left", hl.dsp.layout("move -col"), { description = "Layout: Move column left" })
-hl.bind(mainMod .. " + P", hl.dsp.layout("promote"), { description = "Layout: Promote window" })
-hl.bind(mainMod .. " + L", hl.dsp.layout("togglefit"), { description = "Layout: Toggle fit" })
-hl.bind(mainMod .. " + SHIFT + E", hl.dsp.layout("fit active"), { description = "Layout: Fit active" })
+hl.bind(mainMod .. " + Right", 		hl.dsp.layout("move +col"), { description = "Layout: Move column right" })
+hl.bind(mainMod .. " + Left", 		hl.dsp.layout("move -col"), { description = "Layout: Move column left" })
+hl.bind(mainMod .. " + P", 			hl.dsp.layout("promote"), { description = "Layout: Promote window" })
+hl.bind(mainMod .. " + L", 			hl.dsp.layout("togglefit"), { description = "Layout: Toggle fit" })
+hl.bind(mainMod .. " + SHIFT + E",  hl.dsp.layout("fit active"), { description = "Layout: Fit active" })
 
-hl.bind(mainMod .. " + ALT + Left", hl.dsp.layout("swapcol l"), { description = "Layout: Swap column left" })
+hl.bind(mainMod .. " + ALT + Left",  hl.dsp.layout("swapcol l"), { description = "Layout: Swap column left" })
 hl.bind(mainMod .. " + ALT + Right", hl.dsp.layout("swapcol r"), { description = "Layout: Swap column right" })
-hl.bind(mainMod .. " + ALT + Up", hl.dsp.exec_cmd("hyprctl dispatch swapwindow u"), { description = "Window: Swap up" })
-hl.bind(mainMod .. " + ALT + Down", hl.dsp.exec_cmd("hyprctl dispatch swapwindow d"), { description = "Window: Swap down" })
+hl.bind(mainMod .. " + ALT + Up", 	 hl.dsp.exec_cmd("hyprctl dispatch swapwindow u"), { description = "Window: Swap up" })
+hl.bind(mainMod .. " + ALT + Down",  hl.dsp.exec_cmd("hyprctl dispatch swapwindow d"), { description = "Window: Swap down" })
 
 -----------------------
 -- HARDWARE CONTROLS --
@@ -95,19 +98,19 @@ hl.bind(mainMod .. " + ALT + Down", hl.dsp.exec_cmd("hyprctl dispatch swapwindow
 -- Audio controls
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true, locked = true, description = "Media: Volume up" })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true, locked = true, description = "Media: Volume down" })
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, description = "Media: Toggle mute" })
+hl.bind("XF86AudioMute", 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, description = "Media: Toggle mute" })
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, description = "Media: Toggle mic" })
 
 -- Screen Brightness (Standard Keys)
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { repeating = true, locked = true, description = "Screen: Brightness up" })
+hl.bind("XF86MonBrightnessUp", 	 hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { repeating = true, locked = true, description = "Screen: Brightness up" })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { repeating = true, locked = true, description = "Screen: Brightness down" })
 
 -- Hyprsunset Gamma (SHIFT + Brightness Keys)
-hl.bind("SHIFT + XF86MonBrightnessUp", hl.dsp.exec_cmd("hyprctl hyprsunset gamma +10"), { repeating = true, locked = true, description = "Screen: Gamma up" })
+hl.bind("SHIFT + XF86MonBrightnessUp",   hl.dsp.exec_cmd("hyprctl hyprsunset gamma +10"), { repeating = true, locked = true, description = "Screen: Gamma up" })
 hl.bind("SHIFT + XF86MonBrightnessDown", hl.dsp.exec_cmd("hyprctl hyprsunset gamma -10"), { repeating = true, locked = true, description = "Screen: Gamma down" })
 
 -- Media Player Controls
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true, description = "Media: Next" })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true, description = "Media: Play/Pause" })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true, description = "Media: Previous" })
+hl.bind("XF86AudioNext", 	hl.dsp.exec_cmd("playerctl next"), { locked = true, description = "Media: Next" })
+hl.bind("XF86AudioPause", 	hl.dsp.exec_cmd("playerctl play-pause"), { locked = true, description = "Media: Play/Pause" })
+hl.bind("XF86AudioPlay", 	hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPrev", 	hl.dsp.exec_cmd("playerctl previous"), { locked = true, description = "Media: Previous" })
