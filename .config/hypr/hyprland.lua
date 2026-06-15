@@ -15,19 +15,6 @@ local terminal    = "kitty"
 local fileManager = "thunar"
 local menu        = "rofi -show"
 
--------------------
----- AUTOSTART ----
--------------------
-hl.on("hyprland.start", function()
-    hl.exec_cmd("qs")
-    hl.exec_cmd("awww-daemon")
-    hl.exec_cmd("swaync")
-    hl.exec_cmd("wl-paste --watch cliphist store")
-    hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 22")
-    hl.exec_cmd("udiskie")
-    hl.exec_cmd("hypridle")
-end)
-
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------
