@@ -2,7 +2,6 @@
 hl.window_rule({ match = { class = "vlc" }, opaque = true })
 hl.window_rule({ match = { class = "jetbrains-studio|jetbrains-idea-ce|jetbrains-rustrover" }, opaque = true })
 hl.window_rule({ match = { class = "^(firefox)$" }, rounding = 3 })
-hl.window_rule({ match = { class = "^(vesktop)$" }, workspace = "3 silent" })
 hl.window_rule({ match = { class = "^(io.github.kukuruzka165.materialgram|zapzap)$" }, workspace = "4 silent" })
 hl.window_rule({ match = { class = "^(com.github.neithern.g4music|org.qbittorrent.qBittorrent)$" }, float = true })
 hl.window_rule({ match = { class = "^(ball-game|desert-rain)" }, float = true, fullscreen = true })
@@ -30,7 +29,9 @@ hl.window_rule({
   float = true,
   pin = true,
   no_initial_focus = true,
-  opacity = "1.0 0.8 override" -- Kept your combined string override
+  opacity = "1.0 0.8 override",
+  size = { 585, 330 },
+  move = { "100%-816", "50" }
 })
 
 -- Handle layout alterations sequentially to prevent order-scrambling bugs

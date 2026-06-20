@@ -30,7 +30,8 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd("firefox"), { description = "
 hl.bind(mainMod .. " + SHIFT + O", hl.dsp.exec_cmd("obsidian"), { description = "App: Obsidian" })
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd("thorium-browser-avx2"), { description = "App: Thorium Browser" })
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m window"), { description = "Utilities: Screenshot window" })
-hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprctl dispatch centerwindow"), { description = "Window: Center" })
+
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.window.center(), { description = "Window: Center" })
 
 hl.bind("CTRL + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"), { description = "Session: Reload Hyprland" })
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m output"), { description = "Utilities: Screenshot output", locked = true })
@@ -58,9 +59,8 @@ hl.bind(mainMod .. " + CTRL + S",  hl.dsp.window.move({ workspace = "special:mag
 -----------------------
 -- WINDOW MANAGEMENT --
 -----------------------
-hl.bind(mainMod .. " + ALT + Space", hl.dsp.exec_cmd("hyprctl dispatch togglegroup"), { description = "Window: Toggle group" })
-hl.bind(mainMod .. " + Space", 		 hl.dsp.window.float({ action = "toggle" }), { description = "Toggle Floating" })
-hl.bind(mainMod .. " + F", 			 hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Window: Fullscreen" })
+hl.bind(mainMod .. " + Space", hl.dsp.window.float({ action = "toggle" }), { description = "Toggle Floating" })
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }), { description = "Window: Fullscreen" })
 
 hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.resize({ x = 30,  y = 0,  relative = true }), { repeating = true })
 hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.window.resize({ x = -30, y = 0,  relative = true }), { repeating = true })
