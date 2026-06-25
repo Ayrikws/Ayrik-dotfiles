@@ -32,3 +32,9 @@ hl.layer_rule({
   ignore_alpha = 0.1
 })
 
+hl.window_rule({ 
+  match = { class = ".*[Xx]dg-desktop-portal-gtk.*" }, 
+  float = true, 
+  size = { 1050, 1000 }, 
+  center = true 
+})
