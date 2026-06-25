@@ -15,7 +15,6 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close(), { description = "Window: Close
 hl.bind(mainMod .. " + Delete", hl.dsp.exit(), { description = "Session: Exit Hyprland" })
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager), { description = "App: File manager" })
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu), { description = "App: Launcher" })
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("~/.config/waybar/scripts/launch.sh"), { description = "App: Waybar launcher" })
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("~/.local/bin/clipboard-manager.sh"), { description = "Utilities: Clipboard manager" })
 hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("hyprpicker -a"), { description = "Utilities: Color picker" })
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("/usr/bin/rofi-noter"), { description = "App: Notes" })

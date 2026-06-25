@@ -22,14 +22,6 @@ hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_SIZE", 22)
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
----------------------
----- PERMISSIONS ----
----------------------
--- hl.config({ ecosystem = { enforce_permissions = 1 } })
--- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
--- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
--- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
-
 -----------------------
 ---- LOOK AND FEEL ----
 -----------------------
@@ -41,7 +33,7 @@ hl.config({
         border_size = 1,
 
         col = {
-            active_border   = "rgb(EBDBB2)",
+            active_border   = "rgba(00000000)",
             inactive_border = "rgba(00000000)",
 	},
 
@@ -114,3 +106,4 @@ hl.device({
 require("keybindings")
 require("windowRules")
 require("workspaceRules")
+require("autostart")
