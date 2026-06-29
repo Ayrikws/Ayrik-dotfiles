@@ -13,7 +13,7 @@ hl.window_rule({ match = { class = "^(Motrix)$" }, opacity = 0.80, center = true
 hl.window_rule({ match = { class = "^(org.telegram.desktop)$" }, float = true, opacity = 0.90, center = true })
 
 -- Opacity rules
-hl.window_rule({ match = { class = "^(thunar)$"}, opacity = 0.85 })
+hl.window_rule({ match = { class = "^(thunar)$" }, opacity = 0.85 })
 hl.window_rule({ match = { class = "^(discord|Vesktop|vesktop)$" }, opacity = 0.85 })
 hl.window_rule({ match = { class = "^(v2rayN)$" }, opacity = 0.9 })
 hl.window_rule({ match = { class = "^(ONLYOFFICE)$" }, opacity = 0.90 })
